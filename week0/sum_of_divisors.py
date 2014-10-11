@@ -7,7 +7,11 @@ def sum_of_divisors(n):
         divisor += 1
     return sum
 
-#sum_of_divisors(8)
-#sum_of_divisors(7)
-#sum_of_divisors(1)
-#sum_of_divisors(1000)
+def main():
+    sum_of_divisors(8)
+    sum_of_divisors(7)
+    sum_of_divisors(1)
+    sum_of_divisors(1000)
+
+if __name__ == '__main__':
+    main()
