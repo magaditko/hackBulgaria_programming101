@@ -3,6 +3,7 @@ def nan_expand(times):
         return ""
     return "Not a " * times + "NaN"
 
+
 def main():
     print(nan_expand(2))
 

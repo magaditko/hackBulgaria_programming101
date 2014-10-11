@@ -9,6 +9,7 @@ def zero_insert(n):
         digit -= 1
     return int(number)
 
+
 def main():
     print(zero_insert(116457))
 

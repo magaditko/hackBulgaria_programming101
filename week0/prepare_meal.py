@@ -15,8 +15,9 @@ def prepare_meal(number):
         result = "spam " * largest_div
     return result
 
+
 def main():
     print(prepare_meal(15))
-    
+
 if __name__ == '__main__':
     main()

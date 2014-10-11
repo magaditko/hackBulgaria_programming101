@@ -6,6 +6,7 @@ def next_hack(n):
                 break
     return n
 
+
 def main():
     print(next_hack(8031))
 

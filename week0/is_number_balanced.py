@@ -11,6 +11,7 @@ def is_number_balanced(n):
     else:
         return False
 
+
 def main():
     print(is_number_balanced(1238033))
 

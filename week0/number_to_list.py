@@ -6,6 +6,7 @@ def number_to_list(n):
     result.reverse()
     return result
 
+
 def main():
     print(number_to_list(123023))
 

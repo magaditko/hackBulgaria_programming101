@@ -9,7 +9,8 @@ def calculate_coins(sum):
         if not sum:
             break
     return best_split
-    
+
+
 def main():
     print(calculate_coins(0.53))
 

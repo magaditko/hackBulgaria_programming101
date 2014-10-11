@@ -5,8 +5,9 @@ def is_increasing(seq):
             result = False
     return result
 
+
 def main():
-    print(is_increasing([1,2,3,4,5]))
-    
+    print(is_increasing([1, 2, 3, 4]))
+
 if __name__ == '__main__':
     main()

@@ -4,6 +4,7 @@ def contains_digit(number, digit):
     else:
         return False
 
+
 def main():
     print(contains_digit(1234, 4))
 

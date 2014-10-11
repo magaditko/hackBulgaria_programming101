@@ -6,6 +6,7 @@ def count_consonants(str):
             count += 1
     return count
 
+
 def main():
     print(count_consonants("grrrrgh!"))
 

@@ -4,6 +4,7 @@ def nth_fibonacci(n):
     else:
         return nth_fibonacci(n - 1) + nth_fibonacci(n - 2)
 
+
 def main():
     print(nth_fibonacci(1))
     print(nth_fibonacci(2))

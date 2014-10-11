@@ -1,10 +1,13 @@
 import sum_of_divisors as sod
+
+
 def is_prime(n):
     divs = 1 + n
     if sod.sum_of_divisors(n) == divs:
         return True
     else:
         return False
+
 
 def main():
     print(is_prime(1))

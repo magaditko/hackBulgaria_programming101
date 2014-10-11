@@ -5,8 +5,9 @@ def is_int_palindrome(n):
         return True
     return False
 
+
 def main():
     is_int_palindrome(123)
-    
+
 if __name__ == '__main__':
     main()

@@ -7,6 +7,7 @@ def sum_of_divisors(n):
         divisor += 1
     return sum
 
+
 def main():
     sum_of_divisors(8)
     sum_of_divisors(7)
