@@ -1,19 +1,20 @@
 def nth_fib_lists(listA, listB, n):
-    tmp = listA
+    next = 3
     if n == 1:
         return listA
     elif n == 2:
         return listB
     else:
-        for i in range(n - 2):
-            tmp.extend(listB)
+        while next <= n + 1:
+            tmp = listA + listB
             listA = listB
             listB = tmp
-        return listB
+            next += 1
+        return listA
 
 
 def main():
-    print(nth_fib_lists([], [], 100))
+    print(nth_fib_lists([1, 2], [3, 4], 4))
 
 if __name__ == '__main__':
     main()
