@@ -1,5 +1,8 @@
 import unittest
 
+import sys
+sys.path.insert(0, '../')
+
 from reduce_file_path import reduce_file_path
 
 

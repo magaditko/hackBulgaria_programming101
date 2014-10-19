@@ -1,5 +1,8 @@
 import unittest
 
+import sys
+sys.path.insert(0, '../')
+
 from simplify_fracction import simplify_fraction
 
 
@@ -13,7 +16,7 @@ class SimplifyFractionTest(unittest.TestCase):
         result = simplify_fraction((1, 3))
         self.assertEqual((1, 3), result)
 
-    def test_can_not_be_reduces(self):
+    def test_can_not_be_reduced(self):
         result = simplify_fraction((1, 7))
         self.assertEqual((1, 7), result)
 

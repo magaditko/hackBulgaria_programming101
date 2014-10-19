@@ -1,5 +1,8 @@
 import unittest
 
+import sys
+sys.path.insert(0, '../')
+
 from sort_fractions import sort_fractions
 
 
