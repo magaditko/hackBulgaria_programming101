@@ -1,3 +1,6 @@
+import sys
+sys.path.insert(0, '../simple_problems/')
+
 import is_prime as ip
 
 

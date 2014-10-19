@@ -7,7 +7,7 @@ def is_int_palindrome(n):
 
 
 def main():
-    is_int_palindrome(123)
+    print(is_int_palindrome(123))
 
 if __name__ == '__main__':
     main()
