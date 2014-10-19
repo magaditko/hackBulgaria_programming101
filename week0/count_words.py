@@ -3,13 +3,6 @@ def count_words(arr):
     for item in arr:
         if item in result.keys():
             result[item] += 1
-        else:
+        elif not item.isspace() and not item == '':
             result[item] = 1
     return result
-
-
-def main():
-    print(count_words(["apple", "banana", "apple", "pie"]))
-
-if __name__ == '__main__':
-    main()

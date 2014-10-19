@@ -8,9 +8,8 @@ def sum_of_digits(n):
 
 def main():
     sum_of_digits(1325132435356)
-    sum_of_digits(123)
+    sum_of_digits(123456789)
     sum_of_digits(6)
-    sum_of_digits(-10)
 
 if __name__ == '__main__':
     main()
