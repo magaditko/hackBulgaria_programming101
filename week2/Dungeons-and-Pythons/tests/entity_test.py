@@ -87,7 +87,7 @@ class EntityTest(unittest.TestCase):
 
     def test_attack_with_weapon(self):
         self.shosh_hero.equip_weapon(self.destroyer_weapon)
-        self.assertEqual(self.shosh_hero.attack(), 30)
+        self.assertIn(self.shosh_hero.attack(), [30, 60])
 
 if __name__ == '__main__':
     unittest.main()

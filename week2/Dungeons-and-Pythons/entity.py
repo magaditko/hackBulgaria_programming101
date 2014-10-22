@@ -42,5 +42,7 @@ class Entity:
         if not self.has_weapon():
             return 0
         else:
-            return self.weapon.damage
-
+            if self.weapon.critical_hit():
+                return self.weapon.damage * 2
+            else:
+                return self.weapon.damage

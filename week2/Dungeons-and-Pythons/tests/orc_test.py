@@ -19,7 +19,7 @@ class OrcTest(unittest.TestCase):
 
     def test_return_attack_with_weapon(self):
         self.zaithan_orc.equip_weapon(self.destroyer_weapon)
-        self.assertEqual(51, self.zaithan_orc.attack())
+        self.assertIn(self.zaithan_orc.attack(), [51, 102])
 
     def test_return_attack_without_weapon(self):
         self.assertEqual(0, self.zaithan_orc.attack())
