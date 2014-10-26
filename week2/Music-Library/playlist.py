@@ -1,4 +1,5 @@
 import json
+from song import Song
 
 
 class Playlist():
@@ -47,5 +48,31 @@ class Playlist():
                 result.append(song.artist)
         return result
 
-    def save(self):
-        filename = self.name
+    def save(self, file_name):
+        playlist = {"name": self.name, "songs": []}
+        for song in self.songs:
+            song = song.__dict__
+            playlist["songs"].append(song)
+        playlist_file = open("{}.json".format(file_name), 'a+')
+        playlist_file.write(json.dumps(playlist))
+        playlist_file.close()
+
+
+def load(file_name):
+    playlist_file = open(file_name, 'r')
+    content = playlist_file.read()
+    content = json.loads(content)
+    playlist_file.close()
+    loaded_playlist = Playlist(content['name'])
+    for song in content['songs']:
+        loaded_playlist.songs.append(
+            Song(
+                song['title'],
+                song['artist'],
+                song['album'],
+                song['rating'],
+                song['length'],
+                song['bitrate'])
+        )
+        print(loaded_playlist.songs)
+    return loaded_playlist

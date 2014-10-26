@@ -3,7 +3,10 @@ import unittest
 import sys
 sys.path.insert(0, '../')
 
+import os
+
 from playlist import Playlist
+from playlist import load
 from song import Song
 
 
@@ -66,11 +69,18 @@ class PlaylistTest(unittest.TestCase):
     def test_show_artists(self):
         self.playlist.songs.append(self.horrorcane)
         self.assertEqual(self.playlist.show_artists(), ['Netsky', 'High Rankin'])
-        print(self.horrorcane)
-        print(self.playlist)
 
+    def test_save_playlist(self):
+        self.playlist.songs = [self.puppy, self.horrorcane, self.come_alive]
+        self.playlist.save('DnB')
 
+        os.remove('DnB.json')
 
+    def test_load_playlist(self):
+        self.plist = load('haha.json')
+        self.assertIsInstance(self.plist.songs[0], Song)
+        self.assertEqual(self.puppy.title, self.plist.songs[0].title)
 
 if __name__ == '__main__':
     unittest.main()
+

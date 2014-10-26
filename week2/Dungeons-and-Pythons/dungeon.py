@@ -1,6 +1,7 @@
 from hero import Hero
 from orc import Orc
 
+
 class Dungeon:
 
     def __init__(self, path):
