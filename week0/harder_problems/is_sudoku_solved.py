@@ -1,8 +1,12 @@
 import magic_square as ms
 
+STEP = 3
+COLUMNS = 3
+ROWS = 9
+
 
 def split(list):
-    list = [list[i: i + 3] for i in range(0, len(list), 3)]
+    list = [list[i: i + STEP] for i in range(0, len(list), STEP)]
     return list
 
 
@@ -17,8 +21,8 @@ def split_rows(matrix):
 def find_little_squares(matrix):
     matrix = split_rows(matrix)
     tmp = []
-    for col in range(3):
-        for row in range(9):
+    for col in range(COLUMNS):
+        for row in range(ROWS):
             tmp.append(matrix[row][col])
     tmp = split(tmp)
     return tmp
