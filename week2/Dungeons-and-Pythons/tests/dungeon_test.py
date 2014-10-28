@@ -1,4 +1,5 @@
 import unittest
+import copy
 
 import sys
 sys.path.insert(0, '../')
@@ -6,7 +7,6 @@ sys.path.insert(0, '../')
 from dungeon import Dungeon
 from hero import Hero
 from orc import Orc
-from weapon import Weapon
 
 
 class DungeonTest(unittest.TestCase):
@@ -57,8 +57,20 @@ class DungeonTest(unittest.TestCase):
         self.assertFalse(self.test_dungeon.move('player_1', 'right'))
 
     def test_set_weapons(self):
-        self.assertEqual(self.test_dungeon.weapons[0].type, 'BigAxe')
-        self.assertEqual(self.test_dungeon.weapons[1].type, 'SmallAxe')
+        for weapon in self.test_dungeon.weapons:
+            self.assertIn(self.test_dungeon.weapons[weapon][0].type, ['SmallAxe', 'BigAxe'])
 
+    def test_spawn_weapons(self):
+        test = [0, 4]
+        result = []
+        
+        for i in range(100):
+            dungeon = copy.deepcopy(self.test_dungeon)
+            dungeon.spawn_weapons()
+            result.append(dungeon.weapons['BigAxe'][1])
+
+        self.assertIn(test, result)
+
+    
 if __name__ == '__main__':
     unittest.main()
