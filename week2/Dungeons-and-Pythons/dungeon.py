@@ -1,5 +1,8 @@
+import copy
+
 from hero import Hero
 from orc import Orc
+from weapon import Weapon
 
 
 class Dungeon:
@@ -7,19 +10,32 @@ class Dungeon:
     def __init__(self, path):
         self.path = path
         self.dungeon = []
+        self.weapons = []
         self.set_dungeon()
         self.players = {}
 
     def set_dungeon(self):
         file = open(self.path)
         content = file.read().split('\n')
+        rn = 0
 
-        for row in content:
-            self.dungeon.append(list(row))
-        self.dungeon.pop()
+        for row in enumerate(content):
+            if row[1] == '':
+                rn = row[0]
+                break
+            self.dungeon.append(list(row[1]))
 
+        self.set_weapons(rn, content)
         file.close()
 
+    def set_weapons(self, start, content):
+        weapon = []
+        for x in range(start, len(content)):
+            if content[x] != '':
+                weapon.append(content[x].split(' '))
+        for w in weapon:
+            self.weapons.append(Weapon(w[0], int(w[1]), float(w[2])))
+                
     def print_map(self):
         for row in self.dungeon:
             for col in row:
@@ -55,7 +71,7 @@ class Dungeon:
             return True
 
     def get_next_position(self, current, direction):
-        next_pos = current
+        next_pos = copy.copy(current)
         if direction == 'left':
             next_pos[1] -= 1
         elif direction == 'right':
@@ -70,8 +86,36 @@ class Dungeon:
         else:
             return next_pos
 
+    def check_for_obstacle(self, coordinates):
+        x, y = coordinates[0], coordinates[1]
+        if self.dungeon[x][y] == '#':
+            return True
+        else:
+            return False
+
     def move(self, player, direction):
+
+        new_dungeon = copy.deepcopy(self.dungeon)
         current_position = self.players[player][1]
         next_position = self.get_next_position(current_position, direction)
+
         if not next_position:
             return False
+        elif self.check_for_obstacle(next_position):
+            return False
+        else:
+            new_dungeon[current_position[0]][current_position[1]] = '.'
+            new_dungeon[next_position[0]][next_position[1]] = self.get_entity_type(self.players[player][0])
+            self.players[player][1] = next_position
+
+            self.dungeon = new_dungeon
+
+    def spawn_weapon(self):
+        pass
+
+    # ToDo:
+    # check for player
+    # start new fight
+    # check for weapon
+    # spawn weapon
+
