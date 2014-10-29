@@ -71,6 +71,8 @@ class DungeonTest(unittest.TestCase):
 
         self.assertIn(test, result)
 
+    def test_check_for_weapon(self):
+        pass
     
 if __name__ == '__main__':
     unittest.main()

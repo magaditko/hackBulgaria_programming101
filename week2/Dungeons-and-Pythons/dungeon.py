@@ -105,7 +105,7 @@ class Dungeon:
         elif self.check_for_obstacle(next_position):
             return False
         else:
-
+            if check_for_weapon(next_position)
             self.dungeon = self.modify_dungeon(current_position, '.')
             self.dungeon = self.modify_dungeon(next_position, self.get_entity_type(self.players[player][0]))
             
