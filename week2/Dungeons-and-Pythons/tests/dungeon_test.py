@@ -72,7 +72,18 @@ class DungeonTest(unittest.TestCase):
         self.assertIn(test, result)
 
     def test_check_for_weapon(self):
-        pass
+        self.test_dungeon.dungeon = [['H', 'W', '.'], ['.', '.', '.']]
+        self.assertTrue(self.test_dungeon.check_for_weapon([0, 1]))
+        self.assertFalse(self.test_dungeon.check_for_weapon([0, 2]))
+
+    def test_check_for_player(self):
+        self.test_dungeon.dungeon = [['H', 'W', '.'], ['O', '.', '.']]
+        self.assertTrue(self.test_dungeon.check_for_player([1, 0]))
+        self.assertFalse(self.test_dungeon.check_for_player([0, 2]))
+
+    def test_get_weapon_data_by_coordinates(self):
+        self.test_dungeon.weapons['SmallAxe'][1] = [1, 0]
+        self.assertEqual(self.test_dungeon.get_weapon([1, 0]), self.test_dungeon.weapons['SmallAxe'][0])
     
 if __name__ == '__main__':
     unittest.main()

@@ -71,7 +71,7 @@ class Dungeon:
             self.dungeon[x][y] = self.get_entity_type(entity)
             return True
 
-    def get_next_position(self, current, direction):
+    def get_next_position_coordinates(self, current, direction):
         step = 1
         next_pos = copy.copy(current)
         if direction == 'left':
@@ -88,51 +88,6 @@ class Dungeon:
         else:
             return next_pos
 
-    def check_for_obstacle(self, coordinates):
-        x, y = coordinates[0], coordinates[1]
-        if self.dungeon[x][y] == '#':
-            return True
-        else:
-            return False
 
-    def move(self, player, direction):
-
-        current_position = self.players[player][1]
-        next_position = self.get_next_position(current_position, direction)
-
-        if not next_position:
-            return False
-        elif self.check_for_obstacle(next_position):
-            return False
-        else:
-            if check_for_weapon(next_position)
-            self.dungeon = self.modify_dungeon(current_position, '.')
-            self.dungeon = self.modify_dungeon(next_position, self.get_entity_type(self.players[player][0]))
-            
-            self.players[player][1] = next_position
-
-    def modify_dungeon(self, coordinates, value):
-        dungeon = copy.deepcopy(self.dungeon)
-        dungeon[coordinates[0]][coordinates[1]] = value
-        return dungeon
-
-    def spawn_weapons(self):
-        free_spots = []
-        for row in enumerate(self.dungeon):
-            for col in enumerate(row[1]):
-                if col[1] == '.':
-                    free_spots.append([row[0], col[0]])
-
-        for weapon in self.weapons:
-            spawn_coordinates = choice(free_spots)
-            self.weapons[weapon][1] = spawn_coordinates
-            free_spots.remove(spawn_coordinates)
+        
     
-            self.dungeon = self.modify_dungeon(spawn_coordinates, 'W')
-            
-            
-
-    # ToDo:
-    # check for player
-    # start new fight
-    # check for weapon
