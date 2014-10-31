@@ -30,7 +30,8 @@ class Store:
     def __init__(self, name):
         self.name = name
         self.products = {}
-
+        self.income = 0
+        
     def load_new_products(self, product, count):
         if product in self.products:
             self.products[product] += count
@@ -42,6 +43,16 @@ class Store:
             if isinstance(product, product_class):
                 print("{} - {}".format(product, self.products[product]))
 
+    def sell_product(self, product):
+        if product in self.products and self.products[product] > 0:
+            self.products[product] -= 1
+            self.income += product.profit()
+            return True
+        else:
+            return False
+
+    def total_income(self):
+        return self.income
 
 new_smarthphone = Smartphone('Hack Phone', 500, 820, 7, 10)
 new_store = Store('Laptop.bg')

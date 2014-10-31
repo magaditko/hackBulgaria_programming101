@@ -59,4 +59,4 @@ target/
 *_flymake.py
 
 # id
-id_secret.txt
+credentials.txt
