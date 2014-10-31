@@ -31,7 +31,7 @@ class Dungeon:
             if row[1] == '':
                 break
             for col in enumerate(row[1]):
-                self.mm[(row[0], col[0])] = {'x': {'y': col[1]}}
+                self.mm[(row[0], col[0])] = col[1]
 
         self.set_weapons(rn, content)
         file.close()
@@ -46,9 +46,9 @@ class Dungeon:
 
     def find_spawn(self):
         result = []
-        for row in enumerate(self.d_map):
-            if 'S' in row[1]:
-                result = [row[0], row[1].index('S')]
+        for coord in self.mm:
+            if self.mm[coord] == 'S':
+                result = coord
                 break
         if result:
             return result
@@ -63,12 +63,6 @@ class Dungeon:
         elif type(instance) == Weapon:
             return 'W'
 
-    def modify_map(self, coordinates, letter):
-        d_map = copy.deepcopy(self.d_map)
-        x, y = coordinates[0], coordinates[1]
-        d_map[x][y] = letter
-        self.d_map = d_map
-
     def spawn(self, player_name, entity):
         spawn_coordinates = self.find_spawn()
         player_letter = self.find_letter(entity)
@@ -76,7 +70,7 @@ class Dungeon:
             return False
         else:
             self.players[player_name] = {'details': entity, 'coordinates': spawn_coordinates}
-            self.modify_map(spawn_coordinates, player_letter)
+            self.mm[spawn_coordinates] = player_letter
             return True
             
 

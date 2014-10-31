@@ -36,10 +36,10 @@ class DungeonTest(unittest.TestCase):
 
     def test_find_spawn_points(self):
        
-        self.assertEqual(self.test_dungeon.find_spawn(), [0, 0])
+        self.assertEqual(self.test_dungeon.find_spawn(), (0, 0))
 
-        self.test_dungeon.d_map = [['.', '#', '.', 'H', 'O', 'W']]
-        self.assertFalse(self.test_dungeon.find_spawn())
+        no_spawn_dungeon = Dungeon('dungeon_no_spawn_points.txt') 
+        self.assertFalse(no_spawn_dungeon.find_spawn())
 
     def test_find_instance_letter(self):
         self.assertEqual(self.test_dungeon.find_letter(self.t_hero), 'H')
@@ -49,19 +49,15 @@ class DungeonTest(unittest.TestCase):
     def test_spawn(self):
         self.assertTrue(self.test_dungeon.spawn('player_1', self.t_hero))
         self.assertEqual(self.test_dungeon.players['player_1']['details'], self.t_hero)
-        self.assertEqual(self.test_dungeon.players['player_1']['coordinates'], [0, 0])
+        self.assertEqual(self.test_dungeon.players['player_1']['coordinates'], (0, 0))
 
         self.assertTrue(self.test_dungeon.spawn('player_2', self.t_orc))
-        self.assertEqual(self.test_dungeon.players['player_2']['coordinates'], [4, 9])
+        self.assertEqual(self.test_dungeon.players['player_2']['coordinates'], (4, 9))
         self.assertFalse(self.test_dungeon.spawn('player_1', self.t_orc))
         self.test_dungeon.d_map = ['.', '#']
         self.assertFalse(self.test_dungeon.find_spawn())
         self.assertFalse(self.test_dungeon.spawn('player2', self.t_orc))
         print(self.test_dungeon.players)
-
-    def test_modify_dungeon(self):
-        self.test_dungeon.modify_map([0, 3], 'Z')
-        self.assertEqual(self.test_dungeon.d_map[0][3], 'Z')
         
 if __name__ == '__main__':
     unittest.main()
