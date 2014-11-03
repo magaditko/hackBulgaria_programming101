@@ -54,7 +54,6 @@ class TeamMatcher:
         for student in group:
             for course in student.courses:
                 if course['group'] == group_time and student.available:
-                    print(student.available)
                     names.append(student.return_name())
         return names
 
