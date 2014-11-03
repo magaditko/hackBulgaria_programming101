@@ -3,7 +3,7 @@ class Student:
     def __init__(self, name, courses, available, github):
         self.name = name
         self.courses = courses
-        self.available = available,
+        self.available = available
         self.github = github
 
     def return_courses(self):
