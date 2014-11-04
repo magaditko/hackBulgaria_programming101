@@ -1,4 +1,3 @@
-import copy
 from random import choice
 
 from hero import Hero
@@ -119,7 +118,7 @@ class Dungeon:
     def get_weapon(self, coordinates):
         for weapon in self.weapons:
             if self.weapons[weapon]['coordinates'] == coordinates:
-               return self.weapons[weapon]['details']
+                return self.weapons[weapon]['details']
 
     def return_enemy(self, next_coordinates):
         for player in self.players:
