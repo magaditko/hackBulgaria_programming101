@@ -24,6 +24,4 @@ class Requester:
         Requester.request += self._credentials
         return Requester.request
 
-r = Requester()
-print(r.following('shosh'))
 

@@ -1,4 +1,4 @@
-import magic_square as ms
+from magic_square import list_sum, find_sum_of_rows, find_sum_of_cols
 
 STEP = 3
 COLUMNS = 3
@@ -11,41 +11,42 @@ def split(list):
 
 
 def split_rows(matrix):
-    tmp = []
-    for i in enumerate(matrix):
-        tmp.append(split(matrix[i[0]]))
-
-    return tmp
+    rows = []
+    for row in enumerate(matrix):
+        rows.append(split(matrix[row[0]]))
+    return row
 
 
 def find_little_squares(matrix):
     matrix = split_rows(matrix)
-    tmp = []
+    list_squares = []
     for col in range(COLUMNS):
         for row in range(ROWS):
-            tmp.append(matrix[row][col])
-    tmp = split(tmp)
-    return tmp
+            list_squares.append(matrix[row][col])
+    list_squares = split(list_squares)
+    return list_squares
 
 
 def find_sum_of_squares(matrix):
     squares_sum = []
-    tmp = find_little_squares(matrix)
+    squares = find_little_squares(matrix)
 
-    for list in tmp:
-        tmp_sum = 0
+    for square in squares:
+        square_sum = 0
         for row in list:
-            tmp_sum += ms.list_sum(row)
-        squares_sum.append(tmp_sum)
+            square_sum += list_sum(row)
+        squares_sum.append(square_sum)
     return squares_sum
 
 
-def sudoku_solved(matrix):
-    rows = ms.find_sum_of_rows(matrix)
-    cols = ms.find_sum_of_cols(matrix)
-    squares = find_sum_of_squares(matrix)
+def is
 
-    if rows == cols == squares:
+def sudoku_solved(matrix):
+    rows_sum = find_sum_of_rows(matrix)
+    cols_sum = find_sum_of_cols(matrix)
+    squares_sum = find_sum_of_squares(matrix)
+
+    if rows_sum == cols_sum == squares_sum:
         return True
     else:
         return False

@@ -1,8 +1,6 @@
-def count_words(arr):
+def count_words(array):
     result = {}
-    for item in arr:
-        if item in result.keys():
-            result[item] += 1
-        elif not item.isspace() and not item == '':
-            result[item] = 1
+    for item in array:
+        if not item.isspace() and not item == '':
+            result[item] = array.count(item)
     return result

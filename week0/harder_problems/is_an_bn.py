@@ -1,9 +1,9 @@
 def is_an_bn(word):
-    times = len(word) // 2
-    a_side = word[:len(word) // 2]
-    b_side = word[len(word) // 2:]
+    middle = len(word) // 2
+    a_side = word[:middle] == 'a' * middle
+    b_side = word[middle:]
 
-    if a_side == "a" * times and b_side == "b" * times:
+    if a_side == "a" * middle and b_side == "b" * middle:
         return True
     else:
         return False

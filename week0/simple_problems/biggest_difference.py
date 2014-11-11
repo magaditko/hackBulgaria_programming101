@@ -1,10 +1,3 @@
-def biggest_difference(arr):
-    result = min(arr) - max(arr)
+def biggest_difference(array):
+    result = min(array) - max(array)
     return result
-
-
-def main():
-    print(biggest_difference([-10, -9, -1]))
-
-if __name__ == '__main__':
-    main()

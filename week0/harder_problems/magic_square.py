@@ -38,7 +38,3 @@ def magic_square(matrix):
 
     return sum_matrix[1:] == sum_matrix[:-1]
 
-#print(magic_square([[16, 23, 17], [78, 32, 21], [17, 16, 15]]))
-#print(find_sum_of_rows([[1,2,3],[4,5,6],[7,8,9]]))
-#print(find_sum_of_cols([[1,2,3],[4,5,6],[7,8,9]]))
-#print(find_sum_of_diagonals([[1,2,3],[4,5,6],[7,8,9]]))

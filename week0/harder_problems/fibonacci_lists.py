@@ -1,20 +1,9 @@
-def nth_fib_lists(listA, listB, n):
-    next = 3
+def nth_fib_lists(first_list, second_list, n):
     if n == 1:
-        return listA
+        return first_list
     elif n == 2:
-        return listB
+        return second_list
     else:
-        while next <= n + 1:
-            tmp = listA + listB
-            listA = listB
-            listB = tmp
-            next += 1
-        return listA
-
-
-def main():
-    print(nth_fib_lists([1, 2], [3, 4], 4))
-
-if __name__ == '__main__':
-    main()
+        first_element = nth_fib_lists(first_list, second_list, n - 1)
+        second_element = nth_fib_lists(first_list, second_list, n - 2)
+        return first_element + second_element
