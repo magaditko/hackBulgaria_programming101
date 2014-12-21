@@ -9,8 +9,9 @@ def main_menu():
         
         if command == 'register':
             username = input("Enter your username: ")
-            password = input("Enter your password: ")
-
+            password = ''
+            while not sql_manager.strong_pass(username, password):
+                password = input("Enter your password: ")
             sql_manager.register(username, password)
             
             print("Registration Successfull")
@@ -48,7 +49,10 @@ def logged_menu(logged_user):
             print("Your balance is:" + str(logged_user.get_balance()) + '$')
 
         elif command == 'changepass':
-            new_pass = input("Enter your new password: ")
+            new_pass = ''
+            while not sql_manager.strong_pass(logged_user.get_username(), new_pass):
+                new_pass = input("Enter your new password: ")
+            
             sql_manager.change_pass(new_pass, logged_user)
 
         elif command == 'change-message':
