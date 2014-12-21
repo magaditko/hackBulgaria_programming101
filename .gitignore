@@ -8,6 +8,9 @@ __pycache__/
 # DB
 *.db
 
+# virtualenv for Money in the bank task
+week5/Money_in_the_bank/venv/
+
 # Distribution / packaging
 .Python
 env/
